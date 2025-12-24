@@ -51,7 +51,7 @@ class Vehicle(ABC):
 
 
     @abstractmethod
-    def calculate_trip_cost(distance):
+    def calculate_trip_cost(self,distance):
         pass
 
 class ElectricCar(Vehicle):
@@ -59,8 +59,8 @@ class ElectricCar(Vehicle):
         super().__init__(vehicle_id, model, battery_percentage)
         self.seating_capacity=seating_capacity
 
-    def calculate_trip_cost(distance):
-        pass   
+    def calculate_trip_cost(self,distance):
+        return 5+(.50*distance)
 
 
 class ElectricScooter(Vehicle):
@@ -68,5 +68,5 @@ class ElectricScooter(Vehicle):
         super().__init__(vehicle_id, model, battery_percentage)
         self.max_speed_limit=max_speed_limit
 
-    def calculate_trip_cost(distance):
-        pass  
+    def calculate_trip_cost(self,distance):
+       return 1+(.15*distance)
