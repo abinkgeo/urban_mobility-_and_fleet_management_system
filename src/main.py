@@ -14,7 +14,8 @@ class EcoRideMain:
             print("3. Search Vehicles by Hub ")
             print("4. Search Vehicles by Battery more than 80% ")
             print("5. View vehicle by group")
-            print("6. Exit")
+            print("6. Fleet Analytics")
+            print("7. Exit")
 
             choice = input("Enter your choice: ")
 
@@ -44,10 +45,26 @@ class EcoRideMain:
                     speed = int(input("Enter Max Speed Limit: "))
                     vehicle = ElectricScooter(vehicle_id, model, battery, speed)
 
+                
                 else:
                     print("Invalid Vehicle Type")
                     continue
+                print("\nSet Vehicle Status")
+                print("1. Available")
+                print("2. On Trip")
+                print("3. Under Maintenance")
 
+                status_choice = input("Enter status choice: ")
+
+                if status_choice == "1":
+                    vehicle.set_maintenance_status("Available")
+                elif status_choice == "2":
+                     vehicle.set_maintenance_status("On Trip")
+                elif status_choice == "3":
+                     vehicle.set_maintenance_status("Under Maintenance")
+                else:
+                     print("Invalid status choice, defaulting to Available")
+                     vehicle.set_maintenance_status("Available")
                 fleet_manager.add_vehicle_to_hub(hub_name, vehicle)
 
             elif choice == "3":
@@ -84,6 +101,14 @@ class EcoRideMain:
                             print(v.vehicle_id, v.model)            
 
             elif choice == "6":
+                summary = fleet_manager.get_vehicle_count_by_status()
+
+                print("\nFleet Analytics Summary:")
+                for status, count in summary.items():
+                     print(f"{status}: {count}")
+
+
+            elif choice == "7":
                 print("Exiting Eco-Ride System")
                 break
 

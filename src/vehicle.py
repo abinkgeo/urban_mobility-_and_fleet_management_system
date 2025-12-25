@@ -35,7 +35,11 @@ class Vehicle(ABC):
 
 
     def set_maintenance_status(self, status):
-        self.__maintenance_status = status
+         allowed = ["Available", "On Trip", "Under Maintenance"]
+         if status in allowed:
+                 self.__maintenance_status = status
+         else:
+                raise ValueError("Invalid maintenance status")
 
     def set_battery_percentage(self, battery):
         if 0 <= battery <= 100:
