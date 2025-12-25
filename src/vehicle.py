@@ -54,6 +54,13 @@ class Vehicle(ABC):
     def calculate_trip_cost(self,distance):
         pass
 
+    def __eq__(self, value):
+        if not isinstance(value,Vehicle):
+            return False
+        else:
+            return self.vehicle_id==value.vehicle_id
+        
+        
 class ElectricCar(Vehicle):
     def __init__(self, vehicle_id, model, battery_percentage,seating_capacity):
         super().__init__(vehicle_id, model, battery_percentage)
