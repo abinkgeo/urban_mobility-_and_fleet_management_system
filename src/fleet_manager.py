@@ -35,3 +35,16 @@ class FleetManager:
 
         return result
 
+    def categorize_vehicles_by_type(self):
+        category = {}
+
+        for vehicles in self.hubs.values():
+             for vehicle in vehicles:
+                 vehicle_type = type(vehicle).__name__
+
+                 if vehicle_type not in category:
+                    category[vehicle_type] = []
+
+                 category[vehicle_type].append(vehicle)
+
+        return category

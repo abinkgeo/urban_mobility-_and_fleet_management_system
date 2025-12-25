@@ -13,7 +13,8 @@ class EcoRideMain:
             print("2. Add Vehicle to Hub")
             print("3. Search Vehicles by Hub ")
             print("4. Search Vehicles by Battery more than 80% ")
-            print("5. Exit")
+            print("5. View vehicle by group")
+            print("6. Exit")
 
             choice = input("Enter your choice: ")
 
@@ -71,7 +72,18 @@ class EcoRideMain:
                     for v in result:
                         print(v.vehicle_id, v.model, v.battery_percentage)
 
-            elif choice == "5":
+            elif choice == "5":  
+                category = fleet_manager.categorize_vehicles_by_type()
+
+                if not category:
+                     print("No vehicles available")
+                else:
+                    for v_type, vehicles in category.items():
+                        print(f"\n{v_type}:")
+                        for v in vehicles:
+                            print(v.vehicle_id, v.model)            
+
+            elif choice == "6":
                 print("Exiting Eco-Ride System")
                 break
 
