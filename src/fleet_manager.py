@@ -23,5 +23,15 @@ class FleetManager:
         self.hubs[hub_name].append(vehicle)
         print(f"Vehicle {vehicle.vehicle_id} added to hub '{hub_name}'")
 
-    def get_vehicles_by_hub(self, hub_name):
-        return self.hubs.get(hub_name, [])
+    def search_vehicles_by_hub(self, hub_name):
+         return self.hubs.get(hub_name, [])
+    
+    def search_vehicles_by_battery(self, threshold):
+        result = []
+
+        for vehicles in self.hubs.values():
+                high_battery = [v for v in vehicles if (lambda x: x.battery_percentage > threshold)(v)]
+                result.extend(high_battery)
+
+        return result
+

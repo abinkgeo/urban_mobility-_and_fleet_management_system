@@ -11,15 +11,18 @@ class EcoRideMain:
         while True:
             print("\n1. Add Hub")
             print("2. Add Vehicle to Hub")
-            print("3. View Vehicles in Hub")
-            print("4. Exit")
+            print("3. Search Vehicles by Hub ")
+            print("4. Search Vehicles by Battery more than 80% ")
+            print("5. Exit")
 
             choice = input("Enter your choice: ")
 
+            
             if choice == "1":
                 hub_name = input("Enter Hub Name: ")
                 fleet_manager.add_hub(hub_name)
 
+          
             elif choice == "2":
                 hub_name = input("Enter Hub Name: ")
 
@@ -48,16 +51,27 @@ class EcoRideMain:
 
             elif choice == "3":
                 hub_name = input("Enter Hub Name: ")
-                vehicles = fleet_manager.get_vehicles_by_hub(hub_name)
+                vehicles = fleet_manager.search_vehicles_by_hub(hub_name)
 
                 if not vehicles:
                     print("No vehicles found or hub does not exist")
                 else:
                     print(f"\nVehicles in {hub_name} Hub:")
                     for v in vehicles:
-                        print(f"- {v.vehicle_id} | {v.model}")
+                        print(v.vehicle_id, v.model, v.battery_percentage)
 
+           
             elif choice == "4":
+                result = fleet_manager.search_vehicles_by_battery(80)
+
+                if not result:
+                    print("No vehicles with battery more than  80%")
+                else:
+                    print("\nVehicles with Battery more than 80%:")
+                    for v in result:
+                        print(v.vehicle_id, v.model, v.battery_percentage)
+
+            elif choice == "5":
                 print("Exiting Eco-Ride System")
                 break
 
