@@ -8,26 +8,61 @@ class EcoRideMain:
 
         fleet_manager = FleetManager()
 
-       
-        fleet_manager.add_hub("Downtown")
-        fleet_manager.add_hub("Airport")
+        while True:
+            print("\n1. Add Hub")
+            print("2. Add Vehicle to Hub")
+            print("3. View Vehicles in Hub")
+            print("4. Exit")
 
-   
-        car = ElectricCar("C101", "Tesla Model 3", 90, 5)
-        scooter = ElectricScooter("S201", "Ola S1", 80, 60)
+            choice = input("Enter your choice: ")
 
-   
-        fleet_manager.add_vehicle_to_hub("Downtown", car)
-        fleet_manager.add_vehicle_to_hub("Airport", scooter)
+            if choice == "1":
+                hub_name = input("Enter Hub Name: ")
+                fleet_manager.add_hub(hub_name)
 
+            elif choice == "2":
+                hub_name = input("Enter Hub Name: ")
 
-        print("\nVehicles at Downtown Hub:")
-        for v in fleet_manager.get_vehicles_by_hub("Downtown"):
-            print(v.model)
+                print("\nSelect Vehicle Type")
+                print("1. Electric Car")
+                print("2. Electric Scooter")
+                v_type = input("Enter choice: ")
 
-        print("\nVehicles at Airport Hub:")
-        for v in fleet_manager.get_vehicles_by_hub("Airport"):
-            print(v.model)
+                vehicle_id = input("Enter Vehicle ID: ")
+                model = input("Enter Model Name: ")
+                battery = int(input("Enter Battery Percentage: "))
+
+                if v_type == "1":
+                    seats = int(input("Enter Seating Capacity: "))
+                    vehicle = ElectricCar(vehicle_id, model, battery, seats)
+
+                elif v_type == "2":
+                    speed = int(input("Enter Max Speed Limit: "))
+                    vehicle = ElectricScooter(vehicle_id, model, battery, speed)
+
+                else:
+                    print("Invalid Vehicle Type")
+                    continue
+
+                fleet_manager.add_vehicle_to_hub(hub_name, vehicle)
+
+            elif choice == "3":
+                hub_name = input("Enter Hub Name: ")
+                vehicles = fleet_manager.get_vehicles_by_hub(hub_name)
+
+                if not vehicles:
+                    print("No vehicles found or hub does not exist")
+                else:
+                    print(f"\nVehicles in {hub_name} Hub:")
+                    for v in vehicles:
+                        print(f"- {v.vehicle_id} | {v.model}")
+
+            elif choice == "4":
+                print("Exiting Eco-Ride System")
+                break
+
+            else:
+                print("Invalid choice, try again")
 
 
 if __name__ == "__main__":
