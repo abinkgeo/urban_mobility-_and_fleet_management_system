@@ -63,3 +63,10 @@ class FleetManager:
 
         return status_count
     
+    
+    def get_vehicles_sorted_by_model(self, hub_name):
+
+        vehicles = self.hubs.get(hub_name, [])
+
+        return sorted(vehicles, key=lambda v: v.model.lower())
+

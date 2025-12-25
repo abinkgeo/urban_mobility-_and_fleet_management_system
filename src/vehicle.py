@@ -64,7 +64,8 @@ class Vehicle(ABC):
         else:
             return self.vehicle_id==value.vehicle_id
         
-        
+    def __str__(self):
+        return f"{self.vehicle_id} | {self.model}. | {self.battery_percentage} | {self.get_maintenance_status()}" 
 class ElectricCar(Vehicle):
     def __init__(self, vehicle_id, model, battery_percentage,seating_capacity):
         super().__init__(vehicle_id, model, battery_percentage)

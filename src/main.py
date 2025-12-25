@@ -15,7 +15,8 @@ class EcoRideMain:
             print("4. Search Vehicles by Battery more than 80% ")
             print("5. View vehicle by group")
             print("6. Fleet Analytics")
-            print("7. Exit")
+            print("7. View Vehicles sorted by Model ")
+            print("8. Exit")
 
             choice = input("Enter your choice: ")
 
@@ -109,6 +110,18 @@ class EcoRideMain:
 
 
             elif choice == "7":
+                hub_name = input("Enter Hub Name: ")
+                vehicles = fleet_manager.get_vehicles_sorted_by_model(hub_name)
+
+                if not vehicles:
+                    print("No vehicles found or hub does not exist")
+                else:
+                    print(f"\nVehicles in {hub_name} Hub (Sorted by Model):")
+                    for v in vehicles:
+                        print(v)
+
+
+            elif choice == "8":
                 print("Exiting Eco-Ride System")
                 break
 
