@@ -16,9 +16,7 @@ class EcoRideMain:
             print("5. View vehicle by group")
             print("6. Fleet Analytics")
             print("7. View Vehicles sorted by Model ")
-            print("8. View Vehicles Sorted by Battery ")
-            print("9. View Vehicles Sorted by Rental Price ")
-            print("10. Exit")
+            print("8. Exit")
 
             choice = input("Enter your choice: ")
 
@@ -52,11 +50,6 @@ class EcoRideMain:
                 else:
                     print("Invalid Vehicle Type")
                     continue
-                
-                price = float(input("Enter Rental Price: "))
-                vehicle.set_rental_price(price)
-                
-                
                 print("\nSet Vehicle Status")
                 print("1. Available")
                 print("2. On Trip")
@@ -129,31 +122,6 @@ class EcoRideMain:
 
 
             elif choice == "8":
-                hub_name = input("Enter Hub Name: ")
-                vehicles = fleet_manager.get_vehicles_sorted_by_battery(hub_name)
-
-                if not vehicles:
-                    print("No vehicles found or hub does not exist")
-                else:
-                    print(f"\nVehicles in {hub_name} Hub (Sorted by Battery):")
-                    for v in vehicles:
-                        print(v)
-
-            
-            elif choice == "9":
-                hub_name = input("Enter Hub Name: ")
-                vehicles = fleet_manager.get_vehicles_sorted_by_rental_price(hub_name)
-
-                if not vehicles:
-                    print("No vehicles found or hub does not exist")
-                else:
-                    print(f"\nVehicles in {hub_name} Hub (Sorted by Rental Price):")
-                    for v in vehicles:
-                        print(f"{v.vehicle_id} | {v.model} | $ {v.get_rental_price()} | {v.get_maintenance_status()}")
-
-            
-            
-            elif choice == "10":
                 print("Exiting Eco-Ride System")
                 break
 
