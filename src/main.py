@@ -162,7 +162,6 @@ class EcoRideMain:
             elif choice == "13":
                 print("Exiting Eco-Ride System")
                 break
-
             else:
                 print("Invalid choice, try again")
 
