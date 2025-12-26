@@ -2,4 +2,4 @@ Hub,VehicleType,VehicleID,Model,Battery,RentalPrice,Status,Seating Capcity / Max
 Airport,ElectricCar,873,tesla,90,300.0,Under Maintenance,4
 Airport,ElectricScooter,3442,OLA,76,300.0,On Trip,85
 Downtown,ElectricScooter,23,Ather,90,300.0,Under Maintenance,65
-Downtown,ElectricCar,3243,Cyberster,98,300,On Trip,2
+Downtown,ElectricCar,3243,Cyberster,98,300.0,On Trip,2
