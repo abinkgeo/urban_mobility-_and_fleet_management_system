@@ -1,3 +1,6 @@
+import csv
+import json
+from vehicle import *
 class FleetManager:
     def __init__(self):
       
@@ -75,4 +78,75 @@ class FleetManager:
         
         vehicles=self.hubs.get(hub_name,[])
         
-        return sorted(vehicles, key= lambda v: v.battery_percentage,reverse= True)    
+        return sorted(vehicles, key= lambda v: v.battery_percentage,reverse= True)   
+    
+    def save_to_csv(self, filename):
+        with open(filename, mode="w", newline="") as file:
+            writer = csv.writer(file)
+
+         
+            writer.writerow([
+                "Hub",
+                "VehicleType",
+                "VehicleID",
+                "Model",
+                "Battery",
+                "RentalPrice",
+                "Status",
+                "Seating Capcity / Max Speed "
+            ])
+
+            for hub, vehicles in self.hubs.items():
+                for v in vehicles:
+                    if v.__class__.__name__ == "ElectricCar":
+                        extra = v.seating_capacity
+                    else:
+                        extra = v.max_speed_limit
+
+                    writer.writerow([
+                        hub,
+                        v.__class__.__name__,
+                        v.vehicle_id,
+                        v.model,
+                        v.battery_percentage,
+                        v.get_rental_price(),
+                        v.get_maintenance_status(),
+                        extra
+                    ])
+ 
+    def load_from_csv(self, filename):
+        self.hubs.clear()
+
+        with open(filename, mode="r") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                hub = row["Hub"]
+                v_type = row["VehicleType"]   
+
+                if hub not in self.hubs:
+                    self.hubs[hub] = []
+
+                if v_type == "ElectricCar":
+                    vehicle = ElectricCar(
+                        row["VehicleID"],
+                        row["Model"],
+                        int(row["Battery"]),
+                        int(row["Seating Capcity / Max Speed "])
+                    )
+                else:
+                    vehicle = ElectricScooter(
+                        row["VehicleID"],
+                        row["Model"],
+                        int(row["Battery"]),
+                        int(row["Seating Capcity / Max Speed "])
+                    )
+
+                vehicle.set_rental_price(float(row["RentalPrice"]))
+                vehicle.set_maintenance_status(row["Status"])
+
+                self.hubs[hub].append(vehicle)
+                
+                
+                
+    

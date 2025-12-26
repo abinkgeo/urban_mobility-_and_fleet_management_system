@@ -17,7 +17,10 @@ class EcoRideMain:
             print("6. Fleet Analytics")
             print("7. View Vehicles sorted by Model ")
             print("8. View Vehicles sorted by Battery percentage ")
-            print("9. Exit")
+            print("9. Save to CSV file ")
+            print("10. Load from CSV")
+            print("11.Exit")
+            
 
             choice = input("Enter your choice: ")
 
@@ -51,6 +54,7 @@ class EcoRideMain:
                 else:
                     print("Invalid Vehicle Type")
                     continue
+                
                 print("\nSet Vehicle Status")
                 print("1. Available")
                 print("2. On Trip")
@@ -133,7 +137,17 @@ class EcoRideMain:
                     for v in vehicles:
                         print(v)
 
-            elif choice == "9":
+            elif choice=="9":
+                file_name=input("Enter the file name")
+                fleet_manager.save_to_csv(file_name)
+                print("Fleet data saved to CSV")
+                
+            elif choice=="10":
+                file_name=input("Enter the file name")
+                fleet_manager.load_from_csv(file_name)
+                print("Fleet data loaded from CSV")
+                
+            elif choice == "11":
                 print("Exiting Eco-Ride System")
                 break
 

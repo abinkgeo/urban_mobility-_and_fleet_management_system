@@ -6,7 +6,7 @@ class Vehicle(ABC):
         self.model = model
         self.battery_percentage = None
 
-        self.__rental_price = None
+        self.__rental_price = 300
         self.__maintenance_status = None
 
         self.set_battery_percentage(battery_percentage)
@@ -65,8 +65,7 @@ class Vehicle(ABC):
             return self.vehicle_id==value.vehicle_id
         
     def __str__(self):
-        return f"{self.vehicle_id} | {self.model}. | {self.battery_percentage} | {self.get_maintenance_status()}"
-     
+        return f"{self.vehicle_id} | {self.model}. | {self.battery_percentage} | {self.get_maintenance_status()}" 
 class ElectricCar(Vehicle):
     def __init__(self, vehicle_id, model, battery_percentage,seating_capacity):
         super().__init__(vehicle_id, model, battery_percentage)
