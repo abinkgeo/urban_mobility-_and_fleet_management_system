@@ -19,7 +19,9 @@ class EcoRideMain:
             print("8. View Vehicles sorted by Battery percentage ")
             print("9. Save to CSV file ")
             print("10. Load from CSV")
-            print("11.Exit")
+            print("11. Save to JSON")
+            print("12. Load from JSON")
+            print("13.Exit")
             
 
             choice = input("Enter your choice: ")
@@ -147,7 +149,17 @@ class EcoRideMain:
                 fleet_manager.load_from_csv(file_name)
                 print("Fleet data loaded from CSV")
                 
-            elif choice == "11":
+            elif choice=="11":
+                file_name=input("Enter the file name")
+                fleet_manager.save_to_json(file_name)
+                print("Fleet data saved to JSON")
+                
+            elif choice=="12":
+                file_name=input("Enter the file name")
+                fleet_manager.load_from_json(file_name)
+                print("Fleet data loaded from JSON")
+                
+            elif choice == "13":
                 print("Exiting Eco-Ride System")
                 break
 

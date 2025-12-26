@@ -1,0 +1,42 @@
+{
+    "Airport": [
+        {
+            "type": "ElectricCar",
+            "vehicle_id": "873",
+            "model": "tesla",
+            "battery": 90,
+            "rental_price": 300.0,
+            "status": "Under Maintenance",
+            "extra": 4
+        },
+        {
+            "type": "ElectricScooter",
+            "vehicle_id": "3442",
+            "model": "OLA",
+            "battery": 76,
+            "rental_price": 300.0,
+            "status": "On Trip",
+            "extra": 85
+        }
+    ],
+    "Downtown": [
+        {
+            "type": "ElectricScooter",
+            "vehicle_id": "23",
+            "model": "Ather",
+            "battery": 90,
+            "rental_price": 300.0,
+            "status": "Under Maintenance",
+            "extra": 65
+        },
+        {
+            "type": "ElectricCar",
+            "vehicle_id": "3243",
+            "model": "Cyberster",
+            "battery": 98,
+            "rental_price": 300.0,
+            "status": "On Trip",
+            "extra": 2
+        }
+    ]
+}

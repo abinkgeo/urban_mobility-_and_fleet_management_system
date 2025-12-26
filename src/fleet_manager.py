@@ -149,4 +149,57 @@ class FleetManager:
                 
                 
                 
-    
+    def save_to_json(self, filename):
+        data = {}
+
+        for hub, vehicles in self.hubs.items():
+            data[hub] = []
+
+            for v in vehicles:
+                if v.__class__.__name__ == "ElectricCar":
+                    extra = v.seating_capacity
+                else:
+                    extra = v.max_speed_limit
+
+                data[hub].append({
+                    "type": v.__class__.__name__,
+                    "vehicle_id": v.vehicle_id,
+                    "model": v.model,
+                    "battery": v.battery_percentage,
+                    "rental_price": v.get_rental_price(),
+                    "status": v.get_maintenance_status(),
+                    "extra": extra
+                })
+
+        with open(filename, "w") as file:
+            json.dump(data, file, indent=4)
+
+    def load_from_json(self, filename):
+        self.hubs.clear()
+
+        with open(filename, "r") as file:
+            data = json.load(file)
+
+        for hub, vehicles in data.items():
+            self.hubs[hub] = []
+
+            for v in vehicles:
+                if v["type"] == "ElectricCar":
+                    vehicle = ElectricCar(
+                        v["vehicle_id"],
+                        v["model"],
+                        v["battery"],
+                        v["extra"]
+                    )
+                else:
+                    vehicle = ElectricScooter(
+                        v["vehicle_id"],
+                        v["model"],
+                        v["battery"],
+                        v["extra"]
+                    )
+
+                vehicle.set_rental_price(v["rental_price"])
+                vehicle.set_maintenance_status(v["status"])
+
+                self.hubs[hub].append(vehicle)
