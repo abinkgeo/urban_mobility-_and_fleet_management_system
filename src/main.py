@@ -57,22 +57,6 @@ class EcoRideMain:
                     print("Invalid Vehicle Type")
                     continue
                 
-                print("\nSet Vehicle Status")
-                print("1. Available")
-                print("2. On Trip")
-                print("3. Under Maintenance")
-
-                status_choice = input("Enter status choice: ")
-
-                if status_choice == "1":
-                    vehicle.set_maintenance_status("Available")
-                elif status_choice == "2":
-                     vehicle.set_maintenance_status("On Trip")
-                elif status_choice == "3":
-                     vehicle.set_maintenance_status("Under Maintenance")
-                else:
-                     print("Invalid status choice, defaulting to Available")
-                     vehicle.set_maintenance_status("Available")
                 fleet_manager.add_vehicle_to_hub(hub_name, vehicle)
 
             elif choice == "3":

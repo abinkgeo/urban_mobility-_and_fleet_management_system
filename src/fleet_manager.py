@@ -131,7 +131,8 @@ class FleetManager:
         status_count = {
             "Available": 0,
             "On Trip": 0,
-            "Under Maintenance": 0
+            "Under Maintenance": 0,
+            "StandBy":0
         }
 
         for vehicles in self.hubs.values():

@@ -28,7 +28,7 @@ class Vehicle(ABC):
         self.battery_percentage = None
 
         self.__rental_price = 300
-        self.__maintenance_status = None
+        self.__maintenance_status = "Available"
 
         self.set_battery_percentage(battery_percentage)
 
@@ -51,16 +51,7 @@ class Vehicle(ABC):
         else:
             raise ValueError("Rental price cannot be negative")
 
-    def set_maintenance_status(self, status):
-        """
-        Sets the maintenance status of the vehicle.
-
-        Parameters
-        ----------
-        status : str
-            Maintenance status
-        """
-        self.__maintenance_status = status
+    
 
     def set_battery_percentage(self, battery):
         """
@@ -78,6 +69,9 @@ class Vehicle(ABC):
         """
         if 0 <= battery <= 100:
             self.battery_percentage = battery
+            if battery <=15:
+                self.set_maintenance_status("StandBy")
+
         else:
             raise ValueError("Battery percentage must be between 0 and 100")
 
@@ -117,30 +111,12 @@ class Vehicle(ABC):
         ValueError
             If status is invalid
         """
-        allowed = ["Available", "On Trip", "Under Maintenance"]
+        allowed = ["Available", "On Trip", "Under Maintenance","StandBy"]
         if status in allowed:
             self.__maintenance_status = status
         else:
             raise ValueError("Invalid maintenance status")
 
-    def set_battery_percentage(self, battery):
-        """
-        Sets the battery percentage with validation.
-
-        Parameters
-        ----------
-        battery : int
-            Battery percentage value (0–100)
-
-        Raises
-        ------
-        ValueError
-            If value is out of range
-        """
-        if 0 <= battery <= 100:
-            self.battery_percentage = battery
-        else:
-            raise ValueError("Battery percentage must be between 0 and 100")
 
     def get_maintenance_status(self):
         """
@@ -209,7 +185,7 @@ class Vehicle(ABC):
         str
             Vehicle details as string
         """
-        return f"{self.vehicle_id} | {self.model}. | {self.battery_percentage} | {self.get_maintenance_status()}"
+        return f"{self.vehicle_id} | {self.model} | {self.battery_percentage} | {self.get_maintenance_status()}"
 
 
 class ElectricCar(Vehicle):
