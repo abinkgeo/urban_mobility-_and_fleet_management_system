@@ -1,40 +1,32 @@
-Eco-Ride Urban Mobility System
+## Eco-Ride Urban Mobility System
 
-A Python console application that manages electric vehicles across multiple hubs.
-This project is built to practice Object-Oriented Programming (OOP) concepts and basic data handling in  Python.
+## Overview
 
- What This Project Shows
+Eco-Ride Urban Mobility System is a Python console application that manages electric vehicles across multiple hubs.
+The project is designed to practice Object-Oriented Programming (OOP) concepts and basic data handling in Python.
 
- Object-Oriented Programming in Python
+## Project Objectives
 
- Real-world modeling of vehicles and hubs
+- Apply Object-Oriented Programming principles in Python
+- Model real-world entities such as vehicles and hubs
+- Maintain clean separation between business logic and user interaction
+- Practice file handling and persistence
+- Write basic unit tests
 
- Clean separation of logic and user interaction
+## Key Features
 
- File handling using CSV and JSON
+- Add fleet hubs (e.g., Downtown, Airport)
+- Add electric cars and electric scooters
+- Prevent duplicate vehicle IDs
+- Search vehicles by hub or battery level
+- View vehicles grouped by type
+- Sort vehicles by model, battery level, or price
+- Fleet analytics (vehicle count by status)
+- Save and load data using CSV and JSON
 
- Basic unit testing using pytest
+## Project Structure
 
-Key Features
-
- Add fleet hubs (e.g., Downtown, Airport)
-
- Add Electric Cars and Electric Scooters
-
- Prevent duplicate vehicle IDs
-
- Search vehicles by hub or battery level
-
- View vehicles grouped by type
-
- Sort vehicles by model, battery, or price
-
- Fleet analytics (count by status)
-
- Save and load data using CSV and JSON
-
-Project Structure
-urban_mobility-_and_fleet_management_system/
+urban_mobility_and_fleet_management_system/
 │
 ├── src/
 │   ├── vehicle.py
@@ -48,40 +40,33 @@ urban_mobility-_and_fleet_management_system/
 ├── pytest.ini
 └── README.md
 
-git Design Overview
+## Design Overview
 
-Vehicle is the base class
+- Vehicle is the base class
+- ElectricCar and ElectricScooter extend Vehicle
+- FleetManager handles all business logic
+- main.py handles user input and menu
+- Hubs and vehicles follow an aggregation relationship
 
-ElectricCar and ElectricScooter extend Vehicle
+## Data Persistence
 
-FleetManager handles all business logic
+- CSV is used for flat vehicle data
+- JSON is used for nested hub–vehicle data
+- Custom objects are manually serialized and restored
 
-main.py handles user input and menu
+## Testing
 
-Hubs and vehicles follow an aggregation relationship
+- Unit tests are written using pytest
+- Core business logic is tested independently
 
-File Storage
+## Learning Outcomes
 
-CSV for flat data storage
+- Object-Oriented Programming in Python
+- Working with collections and dictionaries
+- File I/O
+- Basic testing practices
+- Writing clean and readable code
 
-JSON for nested hub-vehicle data
-
-Custom objects are manually serialized and restored
-
-Learning Outcome
-
-This project helps in understanding:
-
-OOP principles in Python
-
-Working with collections and dictionaries
-
-File I/O
-
-Basic testing practices
-
-Writing clean and readable code
-
-Author
+## Author
 
 Abin Geo
