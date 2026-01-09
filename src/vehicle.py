@@ -70,7 +70,7 @@ class Vehicle(ABC):
         if 0 <= battery <= 100:
             self.battery_percentage = battery
             if battery <=15:
-                self.set_maintenance_status("StandBy")
+                self.set_maintenance_status("Stand By")
 
         else:
             raise ValueError("Battery percentage must be between 0 and 100")
@@ -111,7 +111,7 @@ class Vehicle(ABC):
         ValueError
             If status is invalid
         """
-        allowed = ["Available", "On Trip", "Under Maintenance","StandBy"]
+        allowed = ["Available", "On Trip", "Under Maintenance","Stand By"]
         if status in allowed:
             self.__maintenance_status = status
         else:

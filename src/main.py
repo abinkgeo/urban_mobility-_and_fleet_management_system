@@ -12,7 +12,7 @@ class EcoRideMain:
             print("\n1. Add Hub")
             print("2. Add Vehicle to Hub")
             print("3. Search Vehicles by Hub ")
-            print("4. Search Vehicles by Battery more than 80% ")
+            print("4. Search Vehicles by Battery more than 80%")
             print("5. View vehicle by group")
             print("6. Fleet Analytics")
             print("7. View Vehicles sorted by Model ")
